@@ -177,13 +177,15 @@ def main():
 
     # Enhanced usage including overlay visualization
     calibrator = CircleColorGlobalCalibrator('reference_data/ref_colors_data.json')
-    image_path = 'reference_data/refernce_image.jpg'
+    # image_path = 'reference_data/refernce_image.jpg'
+    image_path = 'reference_data/refe.jpeg'
     output_enhanced = f'{saved_img_dir}/enhanced_{timestamp_str}.jpeg'
     output_overlay = f'{saved_img_dir}/annotated_{timestamp_str}.jpeg'
 
     # Process image and get internal details
     image = cv2.imread(image_path)
     result_image = image.copy()
+    
     # circles = calibrator.detect_circles(image)
     circles = detect_and_sort_circles_fixed(image)
 
