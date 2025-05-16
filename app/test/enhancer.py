@@ -9,15 +9,10 @@ from scipy.spatial import distance
 
 """
 Enforces fixed circle sequence from JSON.
-
 Detects exactly 18 circles (left column first, right column next) based on x-coordinate split.
-
 Calculates V scaling factor per circle using KMeans extracted dominant color.
-
 Applies the average global V enhancement factor to the whole image, ensuring natural look.
-
-Avoids over-enhancement using safe clipping (0.5 to 2.0 scaling factors).
-
+Avoids over-enhancement using safe clipping (0.5 to 2.0 scaling factors).ß
 The output is robust for different lighting conditions, cameras, or minor exposure issues.
 """
 
@@ -117,4 +112,4 @@ class CircleColorGlobalCalibrator:
 
 # Usage
 calibrator = CircleColorGlobalCalibrator('reference_data/ref_colors_data.json')
-calibrator.process_image('reference_data/refernce_image.jpg', 'output_data/enhanced_image_by_enhancer_class.jpeg')
+calibrator.process_image('reference_data/ref_shadow_img.png', 'output_data/enhanced_image_by_enhancer_class.jpeg')

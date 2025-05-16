@@ -176,7 +176,7 @@ def main():
     saved_img_dir = f"{output_dir}/{timestamp_str}"
 
     # Enhanced usage including overlay visualization
-    calibrator = CircleColorGlobalCalibrator('reference_data/ref_colors_data.json')
+    calibrator = CircleColorGlobalCalibrator('reference_data/ref_shadow_img.png')
     # image_path = 'reference_data/refernce_image.jpg'
     image_path = 'reference_data/refe.jpeg'
     output_enhanced = f'{saved_img_dir}/enhanced_{timestamp_str}.jpeg'
