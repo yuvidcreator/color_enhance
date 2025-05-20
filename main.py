@@ -177,9 +177,16 @@ def main():
 
     # Enhanced usage including overlay visualization
     calibrator = CircleColorGlobalCalibrator('reference_data/ref_colors_data.json')
-    # image_path = 'reference_data/refernce_image.jpg'
+    
+    # Normal Image
+    image_path = 'reference_data/refernce_image.jpg'
+    
+    # Image has circular object hided 
     # image_path = 'reference_data/ref_shadow_img.png'
-    image_path = 'reference_data/P301C_100_Shadow.png'
+    
+    # single circular object image
+    # image_path = 'reference_data/P301C_100_Shadow.png'
+    
     output_enhanced = f'{saved_img_dir}/enhanced_{timestamp_str}.jpeg'
     output_overlay = f'{saved_img_dir}/annotated_{timestamp_str}.jpeg'
 
@@ -206,7 +213,7 @@ def main():
 
     scaling_factors = np.clip(scaling_factors, 0.5, 2.0)
     avg_scaling = np.mean(scaling_factors)
-    print(f"\nGlobal V Scaling Factor to apply: {avg_scaling:.3f}")
+    print(f"\nGlobal V Scaling Factor to apply: {avg_scaling:.3f}\n")
 
     result_image = ColorEnhancer.apply_v_scaling(result_image, avg_scaling)
     cv2.imwrite(output_enhanced, result_image)
