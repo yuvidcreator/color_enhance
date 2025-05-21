@@ -1,0 +1,6 @@
+pytz, py-cpuinfo, mpmath, urllib3, tzdata, typing_extensions, tqdm, threadpoolctl, 
+sympy, sniffio, six, pyyaml, pyparsing, psutil, pillow, packaging, numpy, networkx, 
+MarkupSafe, kiwisolver, joblib, idna, fsspec, fonttools, filelock, cycler, 
+charset-normalizer, certifi, scipy, requests, python-dateutil, opencv-python, jinja2, 
+exceptiongroup, contourpy, colormath, torch, scikit-learn, pandas, matplotlib, anyio, 
+watchfiles, ultralytics-thop, torchvision, ultralytics

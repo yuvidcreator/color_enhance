@@ -85,8 +85,6 @@ P301C - 80 - #216EC3
 P298C - 100 - #003E98
 /Users/MGBiMACmini_0002/Desktop/Yuvraaj/AiGenomics_Projects/Welleys_Image_Analysis/Color_Enhancing/reference_data/list_of_color_images/P301C_100.png
 
-
-
 I have attached one folder, in that , 3 files are present. 2 reference images  (for complex task , as mention below, use ref_shadow_img.png image and then for image for normal use case)  & one .json file. The actual input image & refernce color values --> list of json data in .json file. For image, Only focus will be in middle black strip. It has middle black color band, on which we can see 18 circular shaped color objects and side by side the squared color objects (the sequence is --> Left Top-To-Bottom then Right Top-To-Bottom).
 
 User can capture this strip using his/her mobile or tab camera. The task would be as follows,
@@ -107,7 +105,6 @@ After that we need to develop fully functional python project to achive below ob
 The Objective is that, users can upload clicked images wrongly from their smart phones or mobile or tab any camera. So we need to ensure that, image must be clear, shadow free, any objstacle free (by which circular plus suqare objects) must be visible with their respective colors. Because tha image will go through further lab processing, report genration and further evaluation on the basis on colors detected in "Squared Objects". So we need to enhance or reduce that source image (as per image quality & position & object detection, whatever the case is).
 
 In this Python project, proper project structure, modular , scalable coding style etc along with best suited design patterns & following SOLID principles and best optimization techniques must be followed.
-
 
 medium size circular object detection then extracting that objects color , then matching with reference dominant color value , then if that color not matching each other then using image color enhancement or reduction technique applying on that detected circular part only.
 
@@ -140,3 +137,75 @@ medium size circular object detection then extracting that objects color , then 
 
 * The color adjustment should be applied specifically to the detected circular region.
 * This is achieved by masking the image with the detected circular shape.
+
+
+### Train model
+
+yolo task=detect mode=train data=data.yaml model=yolov12n.pt epochs=100 imgsz=640 device=0
+
+**-- where ---> link for reference to understand ARGs** 
+
+[Ultralytics Commandlines](https://docs.ultralytics.com/usage/cfg/)
+
+- task -
+- mode -
+- data -
+- model -
+- epochs -
+- imgsz -
+- device - Specifies the computational device(s) for training: a single GPU (`device=0`), multiple GPUs (`device=[0,1]`), CPU (`device=cpu`), MPS for Apple silicon (`device=mps`), or auto-selection of most idle GPU (`device=-1`) or multiple idle GPUs (`device=[-1,-1]`)
+- batch (optional)
+
+-- Usage --> I'm using MacOS Silicon system, so my command will be as follows,
+
+yolo task=detect mode=train data=data.yaml model=yolov12n.pt epochs=100 imgsz=640 device=mps
+
+
+Ref --> https://github.com/sunsmarterjie/yolov12
+
+pip install git+https://github.com/sunsmarterjie/yolov12
+
+#### Build a new model from YAML and start training from scratch
+
+yolo detect train data=data.yaml model=yolo12n.yaml epochs=100 imgsz=640 device=mps
+
+#### Start training from a pretrained *.pt model
+
+yolo detect train data=data.yaml model=yolo12n.pt epochs=100 imgsz=640 device=mps
+
+#### Build a new model from YAML, transfer pretrained weights to it and start training
+
+yolo detect train data=data.yaml model=yolo12n.yaml pretrained=yolo12n.pt epochs=100 imgsz=640 device=mps
+
+
+While leveraging the computational power of the Apple silicon chips, this enables more efficient processing of the training tasks. For more detailed guidance and advanced configuration options, please refer to the
+
+**MPS Availability:**
+
+* You can verify MPS availability with `torch.backends.mps.is_available()`, which should return `True` if MPS is supported.** **
+* Installation Steps (Example using pip):
+
+- **Create a Python environment:** If you don't already have one, create a virtual environment using `conda create -n pytorch_env -y python=3.12` and activate it with `conda activate pytorch_env`.
+
+**- Install PyTorch:** Use the following command to install PyTorch with MPS support:** **
+
+---
+pip install torch torchvision --extra-index-url https://download.pytorch.org/whl/
+---
+**Verify installation :**
+
+import torch
+    print(torch.__version__)
+    print(torch.backends.mps.is_available())
+
+==> The output should show the PyTorch version and `True` for MPS availability.** **
+
+
+**Use the MPS device:**
+
+device = torch.device("mps")
+
+-- Now you can move your tensors and models to the MPS device using `tensor.to(device)` and `model.to(device)`
+
+
+echo -e "test: dataset/test/images\ntrain: dataset/train/images\nval: dataset/valid/images" >> dataset/data.yaml

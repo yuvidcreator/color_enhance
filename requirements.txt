@@ -3,7 +3,14 @@ opencv-python
 numpy
 scikit-learn
 colormath
-ultralytics
 
 # watchfiles requires Python 3.8 - 3.13.
-watchfiles 
+watchfiles
+
+# For model training
+ultralytics
+# torch
+# torchvision
+
+# lightly_train
+# flash-attn 

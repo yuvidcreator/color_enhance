@@ -13,3 +13,6 @@ dependencies = [
     "ultralytics>=8.3.134",
     "watchfiles>=1.0.5",
 ]
+
+[tool.uv.sources]
+ultralytics = { git = "https://github.com/sunsmarterjie/yolov12" }

@@ -1,0 +1,6 @@
+train: /Users/MGBiMACmini_0002/Desktop/Yuvraaj/AiGenomics_Projects/Welleys_Image_Analysis/Color_Enhancing/dataset/train/images
+val: /Users/MGBiMACmini_0002/Desktop/Yuvraaj/AiGenomics_Projects/Welleys_Image_Analysis/Color_Enhancing/dataset/valid/images
+test: /Users/MGBiMACmini_0002/Desktop/Yuvraaj/AiGenomics_Projects/Welleys_Image_Analysis/Color_Enhancing/dataset/test/images
+
+nc: 7
+names: ['black_strip', 'circle', 'markers', 'obstacle', 'shadow', 'square', 'triangle']
